@@ -326,6 +326,7 @@ function startGame() {
      document.getElementById("you").style.display = "none";
      document.getElementById("next").style.display = "none";
      document.getElementById("myAudio").pause();
+     document.getElementById("tieAudio").pause()  
     pubnubGame.unsubscribeAll();
      levell=0;
 }
@@ -463,10 +464,11 @@ function checkTie()
         }
         pubnubGame.unsubscribeAll();
         declareWin("Tie Game!")
+        document.getElementById("tieAudio").play()
         return true;
     }
     return false; 
-     document.getElementById("myAudio").play()  
+     document.getElementById("tieAudio").play()  
 }
 //minimax function takes the input of the user and assumes the optimal move of human and return the index for bestmove from ai side
 
