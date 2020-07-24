@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head> <link rel="stylesheet" href="style.css"> 
+       <link rel="icon" type="image/x-icon" href="favicon.ico"/>
        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
        <title>Martians- TicTacToe</title> 
 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.28.4.js"></script>
 <p id="UUID"></p>
 <script> const newUUID = PubNub.generateUUID();
 document.getElementById("UUID").value= newUUID; 
-console.log(newUUID);
-console.log(document.getElementById("UUID").value);
+//console.log(newUUID);
+//console.log(document.getElementById("UUID").value);
 </script>
 </head>
 <body>
@@ -39,8 +40,8 @@ console.log(document.getElementById("UUID").value);
   <div class="onlineOptions" id="onlineOptions" style= "display: none;">
     <div class = "joincreate" id="joincreate">
         <p><strong>Create or Join game</strong></p>
-        <button class="buttons" id="createButton" onClick="onPressCreate()">Create</button>
-         <button class="buttons" id="joinButton" onClick="onPressJoin()">Join</button>
+        <button class="buttons1" id="createButton" onClick="onPressCreate()">Create</button>
+         <button class="buttons1" id="joinButton" onClick="onPressJoin()">Join</button>
         </div>
     
     <div class = "onPressCreate" id = "onPressCreate" style="display: none;">
@@ -50,8 +51,8 @@ console.log(document.getElementById("UUID").value);
       
       <input type="text" id = "inputRoomId" placeholder ="~Enter Room Id~">
       
-      <button class="buttonss" id="submitJoinButton" onClick="onSubmitJoin()">Play</button> 
-      <div><p id = "LobbyFull"><strong></strong></p></div>
+      <button class="buttonss" id="submitJoinButton" onClick="onSubmitJoin()">Play</button>  
+      <div><p id ="LobbyFull"><strong></strong></p></div>
     
     </div>
     </div>
@@ -79,12 +80,15 @@ console.log(document.getElementById("UUID").value);
         <div class="endgame">
             <div class="text"></div>
         </div>
-        <button onclick="newGame()" id="button" >New Game</button>
+        <button onclick="newGame()" id="button">New Game</button>
+        <audio id="myAudio" controls>
+  <source src="tune.mp3" type="audio/mpeg">
+  </audio>
         <button id="hint" onclick="hint()"></button>
+        <p id="next" style = "display: none;"><strong>Turn:X </strong></p>
+        <p id="you" style = "display: none;"><strong>you:</strong></p>
     </div>
     </div> 
-   	<button id="you">u</button>
-    <button id="next">nxt</button>
    	</div>
    </div>
       <script src="script.js"></script>

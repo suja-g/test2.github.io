@@ -28,7 +28,9 @@ pubnubGame.addListener({
     if(msgString.opponentReady===true && isRoomCreator === true){
         onlinePlayerStart();
     }
-    if(msgString.prevPos != -1) { turn(msgString.prevPos, (msgString.turn === 'onlinePlayer')? onlineOpponent : onlinePlayer);}
+    if(msgString.prevPos != -1) { turn(msgString.prevPos, (msgString.turn === 'onlinePlayer')? onlineOpponent : onlinePlayer);
+      document.getElementById("next").style.display="block";
+    document.getElementById("next").innerText= "Turn:"+msgString.turn;}
   }
 });
 var isOpponent = false;
@@ -64,8 +66,15 @@ function onlinePlayerClick(square){
 }}
 
 function botOptionShow() {
+    document.getElementById("bot").style.backgroundColor= "#14b1ab";
+    document.getElementById("onlinefriend").style.backgroundColor= "#f9d56e";
+    document.getElementById("friend").style.backgroundColor= "#f9d56e";
+    document.getElementById("LobbyFull").style.display="none";
     var y = document.getElementById("onlineOptions");
     y.style.display = "none";
+    document.getElementById("l1").disabled=false;
+    document.getElementById("l2").disabled=false;
+     document.getElementById("l3").disabled=false;
 
     var x = document.getElementById("botOptions");
     x.style.display = "block";
@@ -74,15 +83,27 @@ function botOptionShow() {
 }
 
 function onlineOptionShow() {
+    document.getElementById("bot").style.backgroundColor= "#f9d56e";
+    document.getElementById("onlinefriend").style.backgroundColor= "#14b1ab";
+    document.getElementById("friend").style.backgroundColor= "#f9d56e";
+    document.getElementById("l1").style.backgroundColor= "#f9d56e";
+    document.getElementById("l2").style.backgroundColor= "#f9d56e";
+    document.getElementById("l3").style.backgroundColor= "#f9d56e";
     var y = document.getElementById("botOptions");
     y.style.display = "none";
-
+    document.getElementById("l1").disabled=true;
+    document.getElementById("l2").disabled=true;
+     document.getElementById("l3").disabled=true;
+     document.getElementById("l3").style.backgroundColor="#f9d56e"
+     document.getElementById("l2").style.backgroundColor="#f9d56e"
+     document.getElementById("l1").style.backgroundColor="#f9d56e"
+     levell=0;
     var x = document.getElementById("onlineOptions");
     x.style.display = "block";
     
     document.getElementById("left").style.marginTop= "-2px"; 
  
-    console.log(pubnubGame);
+    document.getElementById("LobbyFull").style.display="none";
 }
 
 // Create a room channel
@@ -94,16 +115,21 @@ function onPressCreate() {
   document.getElementById("onPressCreate").style.display="block";
   document.getElementById("stringRoomId").style.display="block";
   document.getElementById("stringRoomId").innerText="Your Room Id is\n"+roomId+"\nWaiting for friend...";
-  console.log(pubnubGame.uuid);
+ // console.log(pubnubGame.uuid);
   pubnubGame.subscribe({
     channels: [lobbyChannel],
     withPresence: true
   });
   isRoomCreator = true;
+    document.getElementById("LobbyFull").style.display="none";
+    document.getElementById("you").style.display="block";
+    document.getElementById("you").innerText = "YOU:X";
+    document.getElementById("next").style.display="block";
 }
 
 function onPressJoin(){
-  document.getElementById("onPressCreate").style.display="none";
+  document.getElementById("LobbyFull").style.display="none";
+    document.getElementById("onPressCreate").style.display="none";
   document.getElementById("onPressJoin").style.display="block";  
 }
 
@@ -119,7 +145,11 @@ function onSubmitJoin()
         channels: [lobbyChannel],
         withPresence: true
       });
-      pubnubGame.publish({
+        isRoomCreator = false;
+        document.getElementById("you").style.display="block";
+        document.getElementById("next").style.display="block";
+         document.getElementById("you").innerText = "YOU:O";
+        pubnubGame.publish({
         message: {
           opponentReady: true,
           turn: 'onlinePlayer',
@@ -128,11 +158,12 @@ function onSubmitJoin()
         channel: lobbyChannel
       });   
          document.getElementById("button").style.marginLeft= "-180px";
-   document.getElementById("friend").style.backgroundColor="#14b1ab";
+  // document.getElementById("friend").style.backgroundColor="#14b1ab";
    document.getElementById("cards").style.transform= "rotateY(180deg)"
          }
          else{
-            document.getElementById("LobbyFull").innerText="Lobby is full!";
+             document.getElementById("LobbyFull").style.display="block";
+             document.getElementById("LobbyFull").innerText="Lobby is full...";
          } 
 }).catch((error) => { 
   console.log(error);
@@ -170,10 +201,15 @@ startGame();
 //Human_to_friend game code
 
 function friend(){
-    
+    document.getElementById("LobbyFull").style.display="none";
     document.getElementById("button").style.marginLeft= "-180px";
    document.getElementById("friend").style.backgroundColor="#14b1ab";
    document.getElementById("cards").style.transform= "rotateY(180deg)"
+   document.getElementById("bot").style.backgroundColor= "#f9d56e"
+   document.getElementById("onlinefriend").style.backgroundColor= "#f9d56e";
+   document.getElementById("l1").style.backgroundColor= "#f9d56e";
+   document.getElementById("l2").style.backgroundColor= "#f9d56e";
+   document.getElementById("l3").style.backgroundColor= "#f9d56e";
     document.getElementById("first").disabled=true;
    document.getElementById("second").disabled=true;
    document.getElementById("l1").disabled=true;
@@ -243,7 +279,7 @@ if(levell!=0) {   document.getElementById("cards").style.transform= "rotateY(180
 
 
    if (ai === '✘') {
-      turn(bestSpot(levell), ai);
+      turn(Math.floor(Math.random()*9), ai);
   }
 }
    document.querySelector(".endgame").style.display="none";
@@ -270,6 +306,8 @@ function startGame() {
      document.getElementById("second").style.backgroundColor="#f9d56e"
      document.getElementById("first").style.backgroundColor="#f9d56e"
      document.getElementById("friend").style.backgroundColor="#f9d56e"
+     document.getElementById("bot").style.backgroundColor= "#f9d56e"
+     document.getElementById("onlinefriend").style.backgroundColor= "#f9d56e";
      document.getElementById("friend").disabled=false;
        document.getElementById("first").disabled=false;
        document.getElementById("second").disabled=false;
@@ -285,6 +323,8 @@ function startGame() {
      document.getElementById("LobbyFull").innerText='';
      document.getElementById("LobbyFull").style.display = "none";
      document.getElementById("onPressJoin").style.display = "none";
+     document.getElementById("you").style.display = "none";
+     document.getElementById("next").style.display = "none";
     pubnubGame.unsubscribeAll();
      levell=0;
 }
@@ -342,12 +382,14 @@ function gameOver(gameWon) {
     }
    if(gameWon.player==human || gameWon.player==ai){  
     declareWin(gameWon.player==human?"YOU WIN!":"YOU LOSE!"); 
-    document.getElementById("hint").disabled=true;}
+    document.getElementById("hint").disabled=true;
+     document.getElementById("myAudio").play()}
     else if(gameWon.player==onlinePlayer || gameWon.player == onlineOpponent){
         declareWin(gameWon.player==onlinePlayer?"X wins":"O Wins")
-    }
+       document.getElementById("myAudio").play() }
     else{declareWin(gameWon.player==player1?"X Wins!":"O Wins!");
-    document.getElementById("hint").disabled=true;}
+    document.getElementById("hint").disabled=true;
+  document.getElementById("myAudio").play()}
   
 }
 //declareWin function checks if win is declared or not
@@ -363,6 +405,7 @@ function emptySpot() {
 function levels(count)
 {  
     levell=count;
+    document.getElementById("friend").style.backgroundColor="#f9d56e";
     if(count==1)
     {
         document.getElementById("l1").style.backgroundColor="#14b1ab"
@@ -384,14 +427,14 @@ function levels(count)
 //bestSpot function will return index of the board from ai side according to the levels
 function bestSpot(count) {
     if(count==3) {
-    return minimax(board, ai).index; }
+    return minimax(board, ai,3).index; }
     else if(count==1)
     {
-        return level1(board, ai,1).index;
+        return minimax(board, ai,1).index;
     }
     else if(count==2)
     {
-        return level1(board,ai,2).index;
+        return minimax(board,ai,2).index;
     }
 }
 //checkTie function will check if tie situation is happening in game or not
@@ -414,61 +457,9 @@ function checkTie()
     return false;    
 }
 //minimax function takes the input of the user and assumes the optimal move of human and return the index for bestmove from ai side
-function minimax(newBoard, player) {
-    var availSpots = emptySpot(newBoard);
-    
-    if(checkWin(newBoard, human)) {
-           return {score: -10};
-     } else if(checkWin(newBoard, ai)) {
-           return {score: 10};
-     } else if(availSpots.length===0) {
-           return {score: 0};
-     }
-     
-     var moves=[];
-     for(var i=0; i<availSpots.length; i++)
-     {
-        var move={};     
-        move.index= newBoard[availSpots[i]];
-        newBoard[availSpots[i]]=player;
 
-     if(player==ai) {
-        var result = minimax(newBoard, human);
-        move.score = result.score;
-        
-     }else {
-        var result=minimax(newBoard, ai);
-        move.score=result.score;
-    }
-   newBoard[availSpots[i]]=move.index;
-    if ((player === ai && move.score === 10) || (player === human && move.score === -10))
-      return move;
-    else 
-      moves.push(move);
-    
-}
- var bestMove;
- if(player===ai) {
-    var bestScore = -100000;
-    for (var i = 0; i < moves.length; i++) {
-        if(moves[i].score>bestScore) {
-               bestScore=moves[i].score;
-               bestMove=i;
-        }
-     }
- }else {
-    var bestScore = 100000;
-    for (var i = 0; i < moves.length; i++) {
-        if(moves[i].score<bestScore) {
-            bestScore = moves[i].score;
-            bestMove = i;
-        }    
-    }
- }
- return moves[bestMove];
-}
-//level1 function is for level 1 and 2 . It declares that the ai plays partially optimal according to the level.
-function level1(newBoard, player,counts) {
+//This function is for all levels. It declares that the ai plays optimally according to the level.
+function minimax(newBoard, player,counts) {
     var availSpots = emptySpot(newBoard);
     
     if(checkWin(newBoard, human)) {
@@ -537,7 +528,7 @@ function level1(newBoard, player,counts) {
      else { choosen=moves[bestMove];}
      }
     }
-    else{
+    else if(counts==2){
         if(Math.random()*100<=70)
  {
      choosen=moves[bestMove];
@@ -556,6 +547,10 @@ function level1(newBoard, player,counts) {
      }
      }
     }
+    else {
+        choosen=moves[bestMove];
+    }
+ 
  
  return choosen;
 }
@@ -563,7 +558,11 @@ function level1(newBoard, player,counts) {
 function hint(){
     if(emptySpot().length!=0 && !checkTie()) {
     document.getElementById("hint").style.backgroundImage = "url(bulbon.png)";
-     hintindex= minimax(board, human).index;
+    if(emptySpot().length!=9) {
+     hintindex= minimax(board, human, 3).index;
+    } else {
+        hintindex= Math.floor(Math.random()*9);
+    }
     document.getElementById(hintindex).style.backgroundColor="#f4ce10";
     }
 }

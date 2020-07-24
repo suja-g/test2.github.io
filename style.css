@@ -20,7 +20,7 @@ body{
 }
 input{
     height: 30px;
-    margin-top: 25px;
+    margin: 15px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
     font-family: myFirstFont;
@@ -59,14 +59,13 @@ input{
 	height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    background: rgba(232, 80, 91, 1);
     text-align: center;
     font-family: myFirstFont;
     font-size: 1.5em;
     -webkit-border-radius: 20px;
     border-radius: 20px;
 	color: #f3ecc2;
-    background: rgba(232, 80, 91, 1);
-    
 }
 
 .botOptions{
@@ -104,7 +103,10 @@ input{
     cursor: pointer;
 }
 #LobbyFull{
-    font-size: 0.5em;
+    font-size: 0.95em;
+}
+.buttonss:hover{
+    color: rgb(240, 245, 242);
 }
 .buttons1 {
     width: 100px;
@@ -221,7 +223,7 @@ table tr td:last-child {
     background-color: rgb(166, 91, 241); 
     position: absolute;
     left: 50%;
-    margin-left: -210px; 
+    margin-left: -180px; 
     padding-bottom: 10px;
     text-align: center;
     -webkit-border-radius: 20px;
@@ -238,8 +240,8 @@ table tr td:last-child {
 
 #hint{
     width: 30px;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
     margin-top: 15px; 
    height: 50px; 
    background-image: url("bulb.png") ;
@@ -255,8 +257,20 @@ table tr td:last-child {
     background-size: 30px 50px;
     -webkit-background-size: 30px 50px;
 }
-
-
+ #you{
+    float: left;
+    margin-left: 150px;
+    margin-top: -40px; 
+    font-family: myFirstFont;
+    font-size: 0.9em;
+    color: #f3ecc2;
+}
+#next{
+    margin-left: -210px;
+    margin-top: 1px; 
+    font-family: myFirstFont;
+    font-size: 0.9em;
+    color: #f3ecc2;}
 
 
 
