@@ -20,7 +20,7 @@ body{
 }
 input{
     height: 30px;
-    margin: 15px;
+    margin-top: 25px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
     font-family: myFirstFont;
@@ -59,13 +59,14 @@ input{
 	height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: rgba(232, 80, 91, 1);
     text-align: center;
     font-family: myFirstFont;
     font-size: 1.5em;
     -webkit-border-radius: 20px;
     border-radius: 20px;
 	color: #f3ecc2;
+    background: rgba(232, 80, 91, 1);
+    
 }
 
 .botOptions{
@@ -86,6 +87,21 @@ input{
 }
 .buttons:hover{
     color: rgb(240, 245, 242);
+}
+.buttonss{
+    width: 80px;
+    height: 40px;
+    border: none;
+    background-color: #f9d56e;
+    margin-top: 40px;
+    margin-right: 15px;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    color: rgb(15,15,15);
+    font-size: 1em;
+    font-family: myFirstFont;
+    cursor: pointer;
 }
 .buttons1 {
     width: 100px;
