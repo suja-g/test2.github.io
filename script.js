@@ -465,7 +465,8 @@ function checkTie()
         declareWin("Tie Game!")
         return true;
     }
-    return false;    
+    return false; 
+     document.getElementById("myAudio").play()  
 }
 //minimax function takes the input of the user and assumes the optimal move of human and return the index for bestmove from ai side
 
