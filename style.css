@@ -1,0 +1,244 @@
+.maincontainer{
+	width: 450px;
+	height: 420px;
+    position: relative;
+    top: 210px;
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url(ComicSansMSRegular.ttf);
+  }
+body{
+	display: flex;
+	justify-content: center;
+	background: url("bgpic.png");
+	background-repeat: repeat-y;
+	background-position:50% 0%; 
+	background-color: #0d0d0d;
+    background-size: cover;
+    -webkit-background-size: cover;
+}
+input{
+    height: 30px;
+    margin: 15px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-family: myFirstFont;
+    text-align: center;
+}
+#heading span{
+    color: #009e96;
+ text-shadow: 2px 2px 3px white;}
+	
+#heading {
+    text-align: center;
+    position: absolute;
+    top: 1%;
+    font-family: myFirstFont;
+    font-size: 5em;
+    color: #ffd042;
+   /*background-color: rgb(15,15,15,0.9);*/
+   text-shadow: 2px 2px 2px rgb(250, 217, 31);
+} 
+.thecard{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	 -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+    transition: all 0.5s ease;
+    background: rgba(232, 80, 91, 0);
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+.thefront{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: rgba(232, 80, 91, 1);
+    text-align: center;
+    font-family: myFirstFont;
+    font-size: 1.5em;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+	color: #f3ecc2;
+}
+
+.botOptions{
+    display: none;
+}
+.buttons {
+    width: 180px;
+    height: 50px;
+    border: none;
+    background-color: #f9d56e;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    color: rgb(15,15,15);
+    font-size: 1em;
+    font-family: myFirstFont;
+    cursor: pointer;
+}
+.buttons:hover{
+    color: rgb(240, 245, 242);
+}
+.buttons1 {
+    width: 100px;
+    height: 50px;
+    border: none;
+    background-color: #f9d56e;
+    text-align: center;
+     -webkit-border-radius: 10px;
+    border-radius: 10px;;
+    color: rgb(15,15,15);
+    font-size: 1em;
+    font-family: myFirstFont;
+    cursor: pointer;
+}
+.buttons1:hover {
+    color: rgb(240, 245, 242);
+}
+
+.theback{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: rgba(232, 80, 91, 1);
+    -webkit-transform:rotateY(180deg);
+    transform: rotateY(180deg); 
+    text-align: center;
+    font-family: myFirstFont;
+    -webkit-border-radius: 20px;
+	border-radius: 20px;
+	font-size: 18px;
+	font-weight: bold;
+}
+td {
+    border: 2px solid #333;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: myFirstFont, cursive;
+    font-size: 70px;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    position: relative;
+    left: 50%;
+    margin-left: -235px;
+    margin-top: 20px;
+}
+
+td {
+    color: white;
+    border: none;
+    background-color: BLACK;
+    display: inline-block;
+    -webkit-box-shadow: 0 .03em .08em rgba(0,0,0, 0.5);
+    box-shadow: 0 .03em .08em rgba(0,0,0, 0.5);
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    -webkit-border-radius: 10%;
+    border-radius: 10%;
+    margin: 6px;
+}
+table tr:first-child td {
+    border-top: 0px;
+}
+table tr:last-child td {
+    border-bottom: 0px;
+}
+table tr td:first-child {
+    border-left: 0px;
+}
+table tr td:last-child {
+    border-right: 0px;
+}
+.endgame {
+    display: none;
+    width: 200px;
+    top: 100px;
+    margin-left: -95px;
+    background-color: rgba(166, 91, 241, 0.8);
+    position: absolute;
+    text-align: center;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    color: white;
+    font-size: 2.5em;
+}
+.text {
+    font-family: myFirstFont;
+}
+#right {
+    
+    text-align: left;
+    display: inline-block;
+    width: 200px;
+    top: 10px;
+    position: absolute;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    
+}
+
+#button {
+    width: 180px;
+    top: 320px;
+    border: none;
+    background-color: rgb(166, 91, 241); 
+    position: absolute;
+    left: 50%;
+    margin-left: -210px; 
+    padding-bottom: 10px;
+    text-align: center;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    color: white;
+    font-size: 1.7em;
+    font-family: myFirstFont;
+    cursor: pointer;
+}
+#button:hover {
+    color:black;
+}
+
+
+#hint{
+    width: 30px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    margin-top: 15px; 
+   height: 50px; 
+   background-image: url("bulb.png") ;
+   margin-left: 85px;
+   cursor: pointer;
+   border: none;
+   outline: none;
+   background-repeat: no-repeat;
+    background-position: 0% 0%; 
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-color: rgba(232, 80, 91, 0.8);
+    background-size: 30px 50px;
+    -webkit-background-size: 30px 50px;
+}
+
+
+
+
+
+
