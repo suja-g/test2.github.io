@@ -325,7 +325,7 @@ function startGame() {
      document.getElementById("onPressJoin").style.display = "none";
      document.getElementById("you").style.display = "none";
      document.getElementById("next").style.display = "none";
-     disableAutoplay();
+     document.getElementById("myAudio").pause();
     pubnubGame.unsubscribeAll();
      levell=0;
 }
@@ -370,12 +370,12 @@ function checkWin(boards, player) {
 var x = document.getElementById("myAudio");
 function enableAutoplay() { 
   x.autoplay = true;
-  x.load();
+  
 }
  
 function disableAutoplay() { 
   x.autoplay = false;
-  x.load();
+ 
 } 
 function gameOver(gameWon) {
     pubnubGame.unsubscribeAll();
@@ -394,15 +394,14 @@ function gameOver(gameWon) {
    if(gameWon.player==human || gameWon.player==ai){  
     declareWin(gameWon.player==human?"YOU WIN!":"YOU LOSE!"); 
     document.getElementById("hint").disabled=true;
-      enableAutoplay();}
+      }
     else if(gameWon.player==onlinePlayer || gameWon.player == onlineOpponent){
         declareWin(gameWon.player==onlinePlayer?"X wins":"O Wins")
-        enableAutoplay(); }
+         }
     else{declareWin(gameWon.player==player1?"X Wins!":"O Wins!");
     document.getElementById("hint").disabled=true;
-    enableAutoplay();}
-   
-  
+    }
+   document.getElementById("myAudio").play()
 }
 //declareWin function checks if win is declared or not
 function declareWin(who) {
