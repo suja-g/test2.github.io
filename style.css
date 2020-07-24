@@ -103,6 +103,9 @@ input{
     font-family: myFirstFont;
     cursor: pointer;
 }
+#LobbyFull{
+    font-size: 0.5em;
+}
 .buttons1 {
     width: 100px;
     height: 50px;
